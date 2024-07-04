@@ -1,0 +1,29 @@
+services:
+    db:
+        container_name: db
+        image: public.ecr.aws/docker/library/mysql:5.7.44
+        restart: always
+        volumes:
+            - ./db_data/:/var/lib/mysql
+        environment:
+            TZ: "Asia/Bangkok"
+            MYSQL_ROOT_PASSWORD: mypassword123
+            MYSQL_DATABASE: wordpress
+
+    wordpress:
+        container_name: wordpress
+        image: public.ecr.aws/docker/library/wordpress:6.5.5-php8.3-apache
+        restart: always
+        volumes:
+            - ./php.ini:/usr/local/etc/php/php.ini:ro
+            - ./wp_data/:/var/www/html/:rw
+        ports:
+            - "8081:80"
+        environment:
+            TZ: "Asia/Bangkok"
+            WORDPRESS_DB_HOST: db:3306
+            WORDPRESS_DB_NAME: wordpress
+            WORDPRESS_DB_USER: root
+            WORDPRESS_DB_PASSWORD: mypassword123
+        depends_on:
+            - db
