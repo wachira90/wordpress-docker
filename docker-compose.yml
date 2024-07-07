@@ -27,3 +27,17 @@ services:
             WORDPRESS_DB_PASSWORD: mypassword123
         depends_on:
             - db
+
+    phpmyadmin:
+        image: docker.io/library/phpmyadmin:5.2.1-apache
+        container_name: phpmyadmin
+        restart: unless-stopped
+        ports:
+            - "8083:80"
+        environment:
+            TZ: "Asia/Bangkok"
+            MYSQL_ROOT_PASSWORD: mypassword123
+            MYSQL_USER: pma
+            MYSQL_PASSWORD: pma1234
+        depends_on:
+            - db
