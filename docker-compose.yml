@@ -12,8 +12,9 @@ services:
 
     wordpress:
         container_name: wordpress
-#        image: public.ecr.aws/docker/library/wordpress:6.5.5-php8.3-apache
-        image: public.ecr.aws/docker/library/wordpress:6.6.0-php8.3-apache
+        image: public.ecr.aws/docker/library/wordpress:6.6.1-php8.3-apache
+        # image: public.ecr.aws/docker/library/wordpress:6.5.5-php8.3-apache
+        # image: public.ecr.aws/docker/library/wordpress:6.6.0-php8.3-apache
         restart: always
         volumes:
             - ./php.ini:/usr/local/etc/php/php.ini:ro
