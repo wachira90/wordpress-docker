@@ -8,6 +8,8 @@ services:
         environment:
             TZ: "Asia/Bangkok"
             MYSQL_ROOT_PASSWORD: mypassword123
+            MYSQL_USER: bob
+            MYSQL_PASSWORD: wordpress2
             MYSQL_DATABASE: wordpress
 
     wordpress:
